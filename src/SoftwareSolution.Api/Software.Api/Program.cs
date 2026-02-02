@@ -1,4 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
+builder.AddServiceDefaults();
+
+var connectionString = builder.Configuration.GetConnectionString("software-db");
 
 // Add services to the container.
 
@@ -23,4 +26,5 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.MapDefaultEndpoints();
 app.Run();
