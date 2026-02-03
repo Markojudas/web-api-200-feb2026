@@ -1,1 +1,3 @@
-GET https://localhost:9001/weatherforecast/
+
+
+GET https://localhost:9000/weatherforecast
