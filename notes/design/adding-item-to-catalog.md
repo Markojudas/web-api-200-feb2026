@@ -41,7 +41,7 @@ POST https://localhost:9000/catalog
 Content-Type: application/json
 
 {
-    "tile": "Visual Studio Code",
+    "title": "Visual Studio Code",
     "vendor": "https://vendors.company.com/vendors/389389389"
 }
 ```
