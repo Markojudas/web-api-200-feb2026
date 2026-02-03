@@ -41,7 +41,7 @@ public static class AddingItem
             return TypedResults.Ok(fakeResponse);
         } else
         {
-            return TypedResults.BadRequest("No Vendor Found");
+            return TypedResults.BadRequest("No Vendor With That Id");
         }
     }
 }

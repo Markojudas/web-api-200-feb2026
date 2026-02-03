@@ -42,7 +42,7 @@ Content-Type: application/json
 
 {
     "title": "Visual Studio Code",
-    "vendor": "https://vendors.company.com/vendors/389389389"
+    "vendorId": "b1d6f5a1-3f49-4b14-9b6b-0c1d0a1f0002"
 }
 ```
 
