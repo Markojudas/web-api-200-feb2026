@@ -1,5 +1,0 @@
-<Solution>
-  <Project Path="AppHost1/AppHost1.csproj" Id="08749c27-2fcf-4232-952e-bcd83c028c5d" />
-  <Project Path="ServiceDefaults/ServiceDefaults.csproj" Id="9bd55a8d-9727-4ad9-8c25-f4bcfe714eb7" />
-  <Project Path="Software.Api/Software.Api.csproj" />
-</Solution>
