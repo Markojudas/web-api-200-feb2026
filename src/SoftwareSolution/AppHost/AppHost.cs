@@ -7,7 +7,7 @@ var scalar = builder.AddScalarApiReference(options =>
     options
         .PreferHttpsEndpoint() // Use HTTPS endpoints when available
         .AllowSelfSignedCertificates() // Trust self-signed certificates
-        .WithTheme(ScalarTheme.Laserwave);
+        .WithTheme(ScalarTheme.DeepSpace);
 });
 
 // Got Rid of this For Now...
@@ -22,13 +22,18 @@ var scalar = builder.AddScalarApiReference(options =>
 var vendorApiKey = builder.AddParameter("apiKey", "001");
 
 var pg = builder.AddPostgres("pg-server")
+    .WithPgWeb()
     .WithLifetime(ContainerLifetime.Persistent);
 
 var softwareDb = pg.AddDatabase("software-db");
 // might need an initialization script, or a prepared base image, more later.
 
+var vendorDb = pg.AddDatabase("vendors-db");
 
-var vendorApi = builder.AddProject<Projects.Vendors_Api>("vendors-api");
+var vendorApi = builder.AddProject<Projects.Vendors_Api>("vendors-api")
+    .WithReference(vendorDb)
+    .WithHttpCommand("seed", "Seed Data")
+    .WaitFor(vendorDb);
 
 var softwareApi = builder.AddProject<Projects.Software_Api>("software-api")
     .WithReference(softwareDb)
@@ -45,5 +50,6 @@ var gateway = builder.AddProject<Projects.Gateway>("gateway")
     .WaitFor(softwareApi);
 
 scalar.WithApiReference(softwareApi);
+scalar.WithApiReference(vendorApi);
 
 builder.Build().Run();
